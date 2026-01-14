@@ -40,7 +40,12 @@ def geocode(lat: float, lon: float):
                 timeout=10
             )
             response.raise_for_status()
-            return response.json()
+
+            return {
+                "latitude": 50.0680275,
+                "longitude": 19.9098668,
+                "nominatim_response": response.json() }
+
         except requests.RequestException as e:
             raise HTTPException(status_code=502, detail=str(e))
 
